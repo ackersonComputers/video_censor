@@ -1,0 +1,28 @@
+# Python environments and tooling caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Censor scratch data and generated outputs
+.censor/
+*_censored.mkv
+*.censored.srt
+*.censor.json
+
+# Editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

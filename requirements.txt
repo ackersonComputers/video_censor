@@ -1,0 +1,10 @@
+pysubs2>=1.6
+rapidfuzz>=3.6
+PyYAML>=6.0
+rich>=13.0
+whisperx==3.8.6
+faster-whisper==1.2.1
+torch==2.8.0
+torchvision==0.23.0
+torchaudio==2.8.0
+torchcodec==0.7.0

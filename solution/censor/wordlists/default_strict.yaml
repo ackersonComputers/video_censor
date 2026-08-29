@@ -1,0 +1,312 @@
+# Profanity word list for `censor`.
+#
+# Structure:
+#   tiers:
+#     <tier-name>:
+#       exact:     tokens matched only as a whole normalized word
+#       substring: tokens matched if they appear anywhere inside a word
+#                  (catches inflections: "fuck" -> "fuckity", "unfuckingbelievable")
+#       phrases:   multi-word sequences; matched greedily longest-first.
+#                  Whitespace and hyphens between words are interchangeable.
+#
+# `exclusions` are normalized words that are NEVER censored, even if a
+# substring rule would otherwise match them. This is how "christian" and
+# "scunthorpe" survive.
+#
+# Normalization before matching: lowercase, curly quotes -> straight,
+# strip all characters except a-z, 0-9 and ' (so "hard-on" -> "hardon",
+# "f**k" -> "fk" which will NOT match; use `regex_extra` for masked forms).
+
+version: 1
+
+default_tiers: [profanity, religious, sexual, slurs]
+
+exclusions:
+  - "he'll"            # contraction, not the religious word "hell"
+  - christian
+  - christians
+  - christianity
+  - christina
+  - christine
+  - christopher
+  - scunthorpe
+  - penistone
+  - cocktail
+  - cocktails
+  - peacock
+  - peacocks
+  - hancock
+  - shuttlecock
+  - cockpit
+  - cockroach
+  - cockroaches
+  - cocky
+  - dickens
+  - dickinson
+  - moby
+  - titan
+  - titanic
+  - titans
+  - title
+  - titles
+  - titled
+  - constitution
+  - constitutional
+  - analysis
+  - analyst
+  - analytical
+  - assassin
+  - assassinate
+  - assassination
+  - assess
+  - assessment
+  - asset
+  - assets
+  - assign
+  - assignment
+  - assist
+  - assistant
+  - associate
+  - association
+  - assume
+  - assumption
+  - assure
+  - bass
+  - class
+  - classic
+  - embassy
+  - glass
+  - grass
+  - mass
+  - massive
+  - pass
+  - passage
+  - passenger
+  - password
+  - past
+  - grasshopper
+  - hitachi
+  - shiitake
+  - documentary
+  - dockyard
+
+tiers:
+
+  profanity:
+    substring:
+      - fuck        # fucking, fucked, fucker, motherfucker, unfuckingbelievable
+      - shit        # shitty, bullshit, shithead
+      - goddam      # goddamn, goddamnit, goddammit, goddamned
+      - cunt
+    exact:
+      - fuckin
+      - fuk
+      - fuq
+      - frick
+      - fricking
+      - bitch
+      - bitches
+      - bitching
+      - bastard
+      - bastards
+      - asshole
+      - assholes
+      - arsehole
+      - arseholes
+      - dumbass
+      - jackass
+      - smartass
+      - badass
+      - piss
+      - pissed
+      - pissing
+      - prick
+      - pricks
+      - twat
+      - twats
+      - wanker
+      - wankers
+      - bollocks
+      - bugger
+      - slut
+      - sluts
+      - slutty
+      - whore
+      - whores
+      - whoring
+      - crap
+      - crappy
+    phrases:
+      - god damn
+      - god damn it
+      - god dammit
+      - son of a bitch
+      - sons of bitches
+      - piece of shit
+      - full of shit
+      - holy shit
+      - bull shit
+      - jack off
+      - jerk off
+      - pissed off
+
+  religious:
+    exact:
+      - jesus
+      - christ
+      - godsake
+      - hell
+    phrases:
+      - jesus christ
+      - jesus h christ
+      - oh my god
+      - for gods sake
+      - for christs sake
+      - for the love of god
+      - swear to god
+      - god almighty
+      - lord almighty
+
+  sexual:
+    substring:
+      - blowjob
+      - handjob
+      - rimjob
+      - cumshot
+      - creampie
+      - gangbang
+      - deepthroat
+    exact:
+      - tit
+      - tits
+      - titty
+      - titties
+      - cock
+      - cocks
+      - cocksucker
+      - cocksuckers
+      - dick
+      - dicks
+      - dickhead
+      - penis
+      - vagina
+      - boob
+      - boobs
+      - nipple
+      - nipples
+      - pussy
+      - pussies
+      - cum
+      - cums
+      - cumming
+      - orgasm
+      - orgasms
+      - horny
+      - aroused
+      - arousal
+      - boner
+      - erection
+      - erections
+      - hardon
+      - porn
+      - porno
+      - pornhub
+      - pornography
+      - pornographic
+      - sext
+      - sexts
+      - sexting
+      - clit
+      - clitoris
+      - dildo
+      - dildos
+      - dildoes
+      - vibrator
+      - vibrators
+      - buttplug
+      - strapon
+      - threesome
+      - threesomes
+      - foursome
+      - foursomes
+      - orgy
+      - orgies
+      - semen
+      - sperm
+      - jizz
+      - spunk
+      - bdsm
+      - bondage
+      - kinky
+      - fetish
+      - fetishes
+      - masturbate
+      - masturbating
+      - masturbation
+      - nympho
+      - nymphomaniac
+    phrases:
+      - hard on
+      - blow job
+      - hand job
+      - rim job
+      - strap on
+      - butt plug
+      - cum shot
+      - gang bang
+      - get laid
+      - getting laid
+      - go down on
+      - eat her out
+      - eat me out
+      - suck my dick
+      - suck my cock
+      - blow me
+
+  slurs:
+    # Deliberately kept in a separate tier so it can be enabled independently.
+    # Substring matching is used where inflections are common.
+    substring:
+      - nigg
+      - fagg
+    exact:
+      - fag
+      - fags
+      - kike
+      - kikes
+      - spic
+      - spics
+      - wetback
+      - wetbacks
+      - chink
+      - chinks
+      - gook
+      - gooks
+      - tranny
+      - trannies
+      - retard
+      - retarded
+      - retards
+      - dyke
+      - dykes
+      - cripple
+      - midget
+      - midgets
+      - paki
+      - pakis
+      - raghead
+      - ragheads
+      - towelhead
+      - towelheads
+      - honky
+      - cracker
+      - coon
+      - coons
+      - jap
+      - japs
+      - wop
+      - wops
+      - dago
+      - dagos
+      - gyppo
+      - gypo

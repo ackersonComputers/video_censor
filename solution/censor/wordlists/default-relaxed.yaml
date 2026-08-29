@@ -1,0 +1,145 @@
+# Relaxed profanity word list for `censor`.
+#
+# This version focuses on:
+#   - "fuck" and common spelling variants/inflections
+#   - religious profanity
+#   - "cunt" and its inflections
+#   - explicit sexual slang, acts and references
+#
+# Medically neutral anatomy terms such as "penis", "vagina", "breast",
+# "nipple" and "clitoris" are intentionally allowed. Slurs are also not
+# included in this version.
+#
+# Structure:
+#   tiers:
+#     <tier-name>:
+#       exact:     tokens matched only as a whole normalized word
+#       substring: tokens matched if they appear anywhere inside a word
+#       phrases:   multi-word sequences; matched greedily longest-first.
+#                  Whitespace and hyphens between words are interchangeable.
+#
+# `exclusions` are normalized words that are NEVER censored, even if a
+# substring rule would otherwise match them.
+
+version: 1
+
+default_tiers: [profanity, religious, sexual]
+
+exclusions:
+  - scunthorpe       # contains "cunt" after normalization
+
+tiers:
+
+  profanity:
+    substring:
+      - fuck         # fucking, fucked, fucker, motherfucker, etc.
+      - goddam       # goddamn, goddamnit, goddammit, goddamned
+      - cunt         # cunts, cunty, etc.
+    exact:
+      - fuckin
+      - fuk
+      - fuq
+    phrases:
+      - god damn
+      - god damn it
+      - god dammit
+
+  religious:
+    exact:
+      - jesus
+      - christ
+    phrases:
+      - jesus christ
+      - jesus h christ
+      - for christs sake
+
+  sexual:
+    substring:
+      - blowjob
+      - handjob
+      - rimjob
+      - cumshot
+      - creampie
+      - gangbang
+      - deepthroat
+    exact:
+      - tit
+      - tits
+      - titty
+      - titties
+      - cock
+      - cocks
+      - cocksucker
+      - cocksuckers
+      - dick
+      - dicks
+      - dickhead
+      - boob
+      - boobs
+      - pussy
+      - pussies
+      - cum
+      - cums
+      - cumming
+      - orgasm
+      - orgasms
+      - horny
+      - aroused
+      - arousal
+      - boner
+      - erection
+      - erections
+      - hardon
+      - porn
+      - porno
+      - pornhub
+      - pornography
+      - pornographic
+      - sext
+      - sexts
+      - sexting
+      - clit
+      - dildo
+      - dildos
+      - dildoes
+      - vibrator
+      - vibrators
+      - buttplug
+      - strapon
+      - threesome
+      - threesomes
+      - foursome
+      - foursomes
+      - orgy
+      - orgies
+      - semen
+      - sperm
+      - jizz
+      - spunk
+      - bdsm
+      - bondage
+      - kinky
+      - fetish
+      - fetishes
+      - masturbate
+      - masturbating
+      - masturbation
+      - nympho
+      - nymphomaniac
+    phrases:
+      - hard on
+      - blow job
+      - hand job
+      - rim job
+      - strap on
+      - butt plug
+      - cum shot
+      - gang bang
+      - get laid
+      - getting laid
+      - go down on
+      - eat her out
+      - eat me out
+      - suck my dick
+      - suck my cock
+      - blow me
